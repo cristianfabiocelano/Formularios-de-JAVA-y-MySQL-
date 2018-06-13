@@ -52,6 +52,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         PanelPrincipal = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         mHelado = new javax.swing.JMenu();
+        btnVenta = new javax.swing.JMenuItem();
+        btnListarVentas = new javax.swing.JMenuItem();
         btnNuevoHelado = new javax.swing.JMenuItem();
         btnListarHelados = new javax.swing.JMenuItem();
 
@@ -69,6 +71,22 @@ public class frmPrincipal extends javax.swing.JFrame {
         );
 
         mHelado.setText("Helado");
+
+        btnVenta.setText("Venta");
+        btnVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVentaActionPerformed(evt);
+            }
+        });
+        mHelado.add(btnVenta);
+
+        btnListarVentas.setText("Listar Ventas");
+        btnListarVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarVentasActionPerformed(evt);
+            }
+        });
+        mHelado.add(btnListarVentas);
 
         btnNuevoHelado.setText("Nuevo helado");
         btnNuevoHelado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -153,6 +171,38 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnNuevoHeladoActionPerformed
 
+    private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
+        try {
+                if (frmVenta.PuedoCrearOtra()) 
+                {
+                    frmVenta formulario = new frmVenta();
+                    PanelPrincipal.add(formulario);
+                    formulario.setVisible(true);
+                    formulario.setClosable(true);
+                    formulario.setMaximizable(true);
+                }
+        } catch (Exception e) {
+            System.out.println("error "+e.toString());
+            JOptionPane.showMessageDialog(null, "Ya tiene la ventana abierta!");
+        }
+    }//GEN-LAST:event_btnVentaActionPerformed
+
+    private void btnListarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarVentasActionPerformed
+        try {
+                if (frmListadoVentas.PuedoCrearOtra()) 
+                {
+                    frmListadoVentas formulario = new frmListadoVentas();
+                    PanelPrincipal.add(formulario);
+                    formulario.setVisible(true);
+                    formulario.setClosable(true);
+                    formulario.setMaximizable(true);
+                }
+        } catch (Exception e) {
+            System.out.println("error "+e.toString());
+            JOptionPane.showMessageDialog(null, "Ya tiene la ventana abierta!");
+        }
+    }//GEN-LAST:event_btnListarVentasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -191,7 +241,9 @@ public class frmPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane PanelPrincipal;
     private javax.swing.JMenuItem btnListarHelados;
+    private javax.swing.JMenuItem btnListarVentas;
     private javax.swing.JMenuItem btnNuevoHelado;
+    private javax.swing.JMenuItem btnVenta;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu mHelado;
     // End of variables declaration//GEN-END:variables
